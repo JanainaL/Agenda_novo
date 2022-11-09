@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'stdimage',
     'cliente',
     'funcionario',
+    'servico',
 ]
 
 MIDDLEWARE = [
