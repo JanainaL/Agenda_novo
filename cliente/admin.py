@@ -8,6 +8,7 @@ class ClienteAdmin(admin.ModelAdmin):
     fields = ('nome', 'endereco', 'fone', 'email', 'foto', 'fotografia')
     list_display = ('nome', 'fone', 'email')
     readonly_fields = ['fotografia']
+    search_fields = ('nome', 'telefone')
 
     def fotografia(self, obj):
         if obj.foto:
