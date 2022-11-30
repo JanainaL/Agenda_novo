@@ -5,9 +5,9 @@
       <div class="container">
           <form action="" method="GET">
               <div class="field is-grouped is-flex is-align-items-center is-flex-wrap-wrap">
-                  <label class="label p-2 mt-2">Nome do Cliente:</label>
+                  <label class="label p-2 mt-2">Nome do funcionário:</label>
                   <div class="control is-expanded">
-                      <input class="input" type="text" name="buscar" value="{{request.GET.buscar}}" placeholder="Digite o nome do cliente">
+                      <input class="input" type="text" name="buscar" value="{{request.GET.buscar}}" placeholder="Digite o nome do funcionário">
                   </div>
                   <div class="control">
                       <button type="submit" class="button is-link">
@@ -18,7 +18,7 @@
           </form>
         {% if object_list %}
           <div style="text-align: center;">
-              <h1 class="subtitle is-size-4" >Clientes Cadastrados</h1>
+              <h1 class="subtitle is-size-4" >Funcionarios Cadastrados</h1>
           </div>
           <div class="table">
               <table class="table is-table is-bordered is-striped is-narrow is-houverable is-fullwidth">
@@ -26,34 +26,34 @@
               <tr>
                   <th class="has-text-centered">Nome</th>
                   <th class="has-text-centered">Fone</th>
-                  <th class="has-text-centered">E-mail</th>
+                  <th class="has-text-centered">Função</th>
               </tr>
               </thead>
               <tbody>
-              {% for cliente in object_list %}
+              {% for funcionario in object_list %}
               <tr>
                   <td>
                       <a href="#" data-toogle="modal" class="modal-target"
-                          data_bulma-modal="modal{{ cliente.id }}" id="modal{{ cliente.id }}">
-                      {{cliente.nome}}</a></td>
-                  <td>{{cliente.fone}}</td>
-                  <td>{{cliente.email}}</td>
-                  <div class="modal" id="modal{{ cliente.id }}">
+                          data_bulma-modal="modal{{funcionario.id}}" id="modal{{funcionario.id}}">
+                      {{funcionario.nome}}</a></td>
+                  <td>{{funcionario.fone}}</td>
+                  <td>{{funcionario.funcao}}</td>
+                  <div class="modal" id="modal{{ funcionario.id }}">
                       <div class="modal-background"></div>
                       <div class="modal-card">
                           <header class="modal-card-head">
-                              <p class="modal-card-title">Cliente: {{cliente.nome}}</p>
+                              <p class="modal-card-title">Funcionario: {{funcionario.nome}}</p>
                               <button class="delete" aria-label="close" data-bulma-modal="close" id="btnClose"></button>
                           </header>
                           <section class="modal-card-body is-flex is-justify-content-center">
                               <div class="content">
                                   <p class="image is-128x128">
-                                      <img src="{{ cliente.foto.url }}" class="img-fluid" alt=""/>
+                                      <img src="{{ funcionario.foto.url }}" class="img-fluid" alt=""/>
                                   </p>
                               </div>
                           </section>
                           <footer class="modal-card-foot">
-                              <p>Telefone: {{cliente.fone}}</p>
+                              <p>Telefone: {{ funcionario.fone }}</p>
                           </footer>
                       </div>
                   </div>
@@ -63,7 +63,7 @@
               </table>
           </div>
           {% else %}
-          <h2>Não existe clientes cadastrados!</h2>
+          <h2>Não existe funcionários cadastrados!</h2>
           {% endif%}
       </div>
   </section>
