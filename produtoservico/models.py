@@ -10,4 +10,4 @@ class ProdutoServico(models.Model):
         verbose_name_plural = 'Produtos utilizados'
 
     def __str__(self):
-        return f'{self.produto}'
+        return self.produto.nome

@@ -17,6 +17,7 @@ class Atendimento(models.Model):
     class Meta:
         verbose_name = 'Atendimento'
         verbose_name_plural = 'Atendimentos'
+        ordering = ['-horario', ]
 
     def __str__(self):
         return f'Cliente: {self.cliente} - Funcionario: {self.funcionario} - Servico: {self.servico}'
