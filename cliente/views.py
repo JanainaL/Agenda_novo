@@ -1,8 +1,10 @@
 
 from django.core.paginator import Paginator
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from home.utils import HtmlToPdf
+from .forms import ClienteModelForm
 from .models import Cliente
 
 class ClientesView(ListView):
@@ -25,4 +27,20 @@ class ClientesView(ListView):
             return html_pdf.response
         else:
             return super(ClientesView, self).get(*args, **kwargs)
+class ClienteAddView(CreateView):
+     form_class = ClienteModelForm
+     model = Cliente
+     template_name = 'cliente_form.html'
+     success_url = reverse_lazy('clientes')
 
+
+class ClienteUpDateView(UpdateView):
+    form_class = ClienteModelForm
+    model = Cliente
+    template_name = 'cliente_form.html'
+    success_url = reverse_lazy('clientes')
+
+class ClienteDeleteView(DeleteView):
+    model = Cliente
+    template_name = 'clientes_apagar.html'
+    success_url = reverse_lazy('clientes')

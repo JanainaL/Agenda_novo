@@ -34,6 +34,7 @@
                                 <th class="has-text-centered">Nome</th>
                                 <th class="has-text-centered">Fone</th>
                                 <th class="has-text-centered">E-mail</th>
+                                <th class="has-text-centered style="width: 100px;">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,19 @@
                                         {{ cliente.nome }} </a></td>
                                     <td> {{ cliente.fone }}</td>
                                     <td> {{ cliente.email }}</td>
+                                    <td class="ha-text-centered is-flex is-flex-whap-nowrap is-justify-content-center">
+                                        <a href="{% url 'cliente_editar' cliente.pk %}">
+                                            <span class="icon">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                        </a>
+
+                                        <a href="{% url 'clientes_apagar' cliente.pk %}">
+                                            <span class="icon">
+                                                <i class="far fa-trash-alt"></i>
+                                            </span>
+                                        </a>
+                                    </td>
                                     <div class="modal" id="modal{{ cliente.id }}">
                                         <div class="modal-background"></div>
                                         <div class="modal-card">
