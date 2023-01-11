@@ -1,0 +1,29 @@
+{% extended "base.html" %}
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <div class="column is-mobile">
+                <div class="column is-half is-off-set-ane-quarter">
+                    <h3 class="title is-size-3">Produtos Utilizados no Serviço: {{ servico }}</h3>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% for field in formset %}
+                        <div class="field">
+                            <label class="label is-capitalized">{{ field }}</label>
+                        </div>
+                        <hr/>
+                        {% endfor %}
+                        {{ formset.management_form }}
+
+                        {% csrf_token %}
+                        <div>
+                            <button class="button is-link is-primary" type="submit">Salvar</button>
+                            <button class="button is-danger is-pulled-right " type="reset">
+                                <a href="{% url 'servicos' %}">Cancelar</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

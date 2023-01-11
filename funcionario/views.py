@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DeleteView, CreateView, UpdateView
+
+from .forms import FuncionarioModelForm
 from .models import Funcionario
 
 class FuncionariosView(ListView):
@@ -16,3 +19,27 @@ class FuncionariosView(ListView):
         paginator = Paginator(qs, 1)
         listagem = paginator.get_page(self.request.GET.get('page'))
         return listagem
+
+class FuncionarioDeleteView(DeleteView):
+    model = Funcionario
+    template_name = 'funcionario_apagar.html'
+    success_url = reverse_lazy('funcionarios')
+
+class FuncionarioAddView(CreateView):
+        form_class = FuncionarioModelForm
+        model = Funcionario
+        template_name = 'funcionario_form.html'
+        success_url = reverse_lazy('funcionarios')
+
+
+class FuncionarioUpDateView(UpdateView):
+    form_class = FuncionarioModelForm
+    model = Funcionario
+    template_name = 'funcionario_form.html'
+    success_url = reverse_lazy('funcionarios')
+
+
+class FuncionarioDeleteView(DeleteView):
+    model = Funcionario
+    template_name = 'funcionario_apagar.html'
+    success_url = reverse_lazy('funcionarios')
